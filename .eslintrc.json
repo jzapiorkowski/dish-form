@@ -58,7 +58,7 @@
     "plugin:react-hooks/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react", "prettier", "jest", "cypress", "react-hooks"],
+  "plugins": ["@typescript-eslint", "react", "prettier", "react-hooks"],
   "settings": {
     "react": {
       "version": "detect"
