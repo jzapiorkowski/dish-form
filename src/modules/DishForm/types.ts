@@ -1,4 +1,4 @@
-export enum DishFormFields {
+export enum DishFormFieldNames {
   NAME = 'name',
   PREPATATION_TIME = 'preparation_time',
   TYPE = 'type',
@@ -9,16 +9,16 @@ export enum DishFormFields {
 }
 
 export interface DishFormType {
-  [DishFormFields.NAME]: string | null;
-  [DishFormFields.PREPATATION_TIME]: string | null;
-  [DishFormFields.TYPE]: DishType | null;
-  [DishFormFields.NO_OF_SLICES]: number;
-  [DishFormFields.DIAMETER]: number;
-  [DishFormFields.SPICINESS_SCALE]: number;
-  [DishFormFields.SLICES_OF_BREAD]: number;
+  [DishFormFieldNames.NAME]: string | null;
+  [DishFormFieldNames.PREPATATION_TIME]: string | null;
+  [DishFormFieldNames.TYPE]: DishType | null;
+  [DishFormFieldNames.NO_OF_SLICES]: number;
+  [DishFormFieldNames.DIAMETER]: number;
+  [DishFormFieldNames.SPICINESS_SCALE]: number;
+  [DishFormFieldNames.SLICES_OF_BREAD]: number;
 }
 
-enum DishType {
+export enum DishType {
   PIZZA = 'pizza',
   SOUP = 'soup',
   SANDWICH = 'sandwich',

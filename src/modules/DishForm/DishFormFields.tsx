@@ -1,0 +1,57 @@
+import { styled } from '@mui/material/styles';
+import { TextField } from '../../libs/components/TextField';
+import SelectField from '../../libs/components/SelectField/SelectField';
+import { DishFormLabels, dishTypeOptions } from './constants';
+import { DishFormFieldNames, DishFormType, DishType } from './types';
+import { useFormContext } from 'react-hook-form';
+import { useMemo } from 'react';
+
+const StyledFieldsContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+`;
+
+export function DishFormFields() {
+  const { watch } = useFormContext<DishFormType>();
+
+  const dishType = watch(DishFormFieldNames.TYPE);
+
+  const additionalFields = useMemo(() => {
+    switch (dishType) {
+      case DishType.PIZZA:
+        return (
+          <>
+            <TextField label={DishFormLabels.no_of_slices} fieldName={DishFormFieldNames.NO_OF_SLICES}></TextField>
+            <TextField label={DishFormLabels.diameter} fieldName={DishFormFieldNames.DIAMETER}></TextField>
+          </>
+        );
+
+      case DishType.SOUP:
+        return (
+          <TextField label={DishFormLabels.spiciness_scale} fieldName={DishFormFieldNames.SPICINESS_SCALE}></TextField>
+        );
+
+      case DishType.SANDWICH:
+        return (
+          <TextField label={DishFormLabels.slices_of_bread} fieldName={DishFormFieldNames.SLICES_OF_BREAD}></TextField>
+        );
+
+      default:
+        return <></>;
+    }
+  }, [dishType]);
+
+  return (
+    <StyledFieldsContainer>
+      <TextField label={DishFormLabels.name} fieldName={DishFormFieldNames.NAME}></TextField>
+      <TextField label={DishFormLabels.preparation_time} fieldName={DishFormFieldNames.PREPATATION_TIME}></TextField>
+      <SelectField
+        label={DishFormLabels.type}
+        fieldName={DishFormFieldNames.TYPE}
+        options={dishTypeOptions}
+      ></SelectField>
+      {additionalFields}
+    </StyledFieldsContainer>
+  );
+}

@@ -1,24 +1,28 @@
 import { FormProvider, useForm } from 'react-hook-form';
-import { DishFormFields, DishFormType } from './types';
+import { DishFormFieldNames, DishFormType } from './types';
+import { DishFormFields } from './DishFormFields';
 
 export function DishForm() {
   const formMethods = useForm<DishFormType>({
     defaultValues: {
-      [DishFormFields.NAME]: null,
-      [DishFormFields.PREPATATION_TIME]: null,
-      [DishFormFields.TYPE]: null,
-      [DishFormFields.NO_OF_SLICES]: 0,
-      [DishFormFields.DIAMETER]: 0,
-      [DishFormFields.SPICINESS_SCALE]: 0,
-      [DishFormFields.SLICES_OF_BREAD]: 0,
+      [DishFormFieldNames.NAME]: null,
+      [DishFormFieldNames.PREPATATION_TIME]: null,
+      [DishFormFieldNames.TYPE]: null,
+      [DishFormFieldNames.NO_OF_SLICES]: 0,
+      [DishFormFieldNames.DIAMETER]: 0,
+      [DishFormFieldNames.SPICINESS_SCALE]: 0,
+      [DishFormFieldNames.SLICES_OF_BREAD]: 0,
     },
   });
 
-  const onSubmit = () => null;
+  const onSubmit = data => console.log(data);
 
   return (
     <FormProvider {...formMethods}>
-      <form onSubmit={formMethods.handleSubmit(onSubmit)}>form</form>
+      <form onSubmit={formMethods.handleSubmit(onSubmit)}>
+        <DishFormFields />
+        <button type="submit">submot</button>
+      </form>
     </FormProvider>
   );
 }

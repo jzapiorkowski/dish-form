@@ -1,4 +1,3 @@
-import './App.css';
 import { DishForm } from './modules/DishForm';
 
 function App() {
