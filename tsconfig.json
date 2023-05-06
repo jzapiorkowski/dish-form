@@ -22,10 +22,9 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "paths": {
-      "@UG/libs/components": ["./src/libs/components"],
-      "@UG/libs/types": ["./src/libs/types"]
+      "@libs/components": ["./src/libs/components"]
     }
   },
-  "include": ["src/**/*", "cypress", "./src/assets/images/index.d.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
