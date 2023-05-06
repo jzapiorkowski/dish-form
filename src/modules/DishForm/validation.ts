@@ -7,6 +7,8 @@ const requiredError = (fieldName: DishFormFieldNames) => `${DishFormLabels[field
 const numberTypeError = (fieldName: DishFormFieldNames) => `${DishFormLabels[fieldName]} must be a number`;
 const minValueError = (fieldName: DishFormFieldNames, value: number) =>
   `${DishFormLabels[fieldName]} must be at least ${value}`;
+const maxValueError = (fieldName: DishFormFieldNames, value: number) =>
+  `${DishFormLabels[fieldName]} must maximum ${value}`;
 
 export const validationSchema = yupResolver(
   yup.object({
@@ -43,6 +45,7 @@ export const validationSchema = yupResolver(
         yup
           .number()
           .min(1, ({ path }) => minValueError(path as DishFormFieldNames, 1))
+          .max(10, ({ path }) => maxValueError(path as DishFormFieldNames, 10))
           .typeError(({ path }) => numberTypeError(path))
           .required(({ path }) => requiredError(path)),
     }),
