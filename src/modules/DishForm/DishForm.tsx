@@ -4,6 +4,7 @@ import { DishFormFields } from './DishFormFields';
 import { validationSchema } from './validation';
 import { Button } from '@mui/material';
 import axios from 'axios';
+import { filterPayload } from './utils';
 
 export function DishForm() {
   const formMethods = useForm<DishFormType>({
@@ -21,7 +22,12 @@ export function DishForm() {
 
   const onSubmit = async (data: DishFormType) => {
     try {
-      const response = await axios.post('https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/', data);
+      const filteredPayload = filterPayload(data);
+
+      const response = await axios.post(
+        'https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/',
+        filteredPayload,
+      );
       console.log(response);
     } catch (error: any) {
       const requestErrors = error?.response?.data;
