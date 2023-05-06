@@ -11,7 +11,10 @@ const minValueError = (fieldName: DishFormFieldNames, value: number) =>
 export const validationSchema = yupResolver(
   yup.object({
     [DishFormFieldNames.NAME]: yup.string().required(({ path }) => requiredError(path)),
-    [DishFormFieldNames.PREPATATION_TIME]: yup.string().required(({ path }) => requiredError(path)),
+    [DishFormFieldNames.PREPATATION_TIME]: yup
+      .string()
+      .matches(/^[0-9]{2}:[0-9]{2}:[0-9]{2}$/, 'Invalid time format (HH:MM:SS)')
+      .required(({ path }) => requiredError(path)),
     [DishFormFieldNames.TYPE]: yup
       .mixed<DishType>()
       .oneOf(Object.values(DishType))

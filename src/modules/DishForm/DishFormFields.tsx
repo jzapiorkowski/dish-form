@@ -57,7 +57,11 @@ export function DishFormFields() {
   return (
     <StyledFieldsContainer>
       <TextField label={DishFormLabels.name} fieldName={DishFormFieldNames.NAME}></TextField>
-      <TextField label={DishFormLabels.preparation_time} fieldName={DishFormFieldNames.PREPATATION_TIME}></TextField>
+      <TextField
+        label={DishFormLabels.preparation_time}
+        fieldName={DishFormFieldNames.PREPATATION_TIME}
+        placeholder="HH:MM:SS"
+      ></TextField>
       <SelectField
         label={DishFormLabels.type}
         fieldName={DishFormFieldNames.TYPE}

@@ -6,6 +6,7 @@ interface TextFieldProps {
   label: string;
   fieldName: string;
   type?: string;
+  placeholder?: string;
 }
 
 const StyledTextField = styled(MUITextField)`
@@ -26,7 +27,7 @@ const StyledContainer = styled('div')`
   flex-direction: column;
 `;
 
-export function TextField({ label, fieldName, type = 'text' }: TextFieldProps) {
+export function TextField({ label, fieldName, type = 'text', placeholder }: TextFieldProps) {
   const {
     register,
     formState: { errors },
@@ -42,6 +43,7 @@ export function TextField({ label, fieldName, type = 'text' }: TextFieldProps) {
         inputRef={inputRef}
         {...inputProps}
         label={label}
+        placeholder={placeholder}
         error={!!errors?.[fieldName]}
       />
       {errors?.[fieldName] && (
