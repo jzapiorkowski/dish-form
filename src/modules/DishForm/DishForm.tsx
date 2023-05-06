@@ -3,9 +3,17 @@ import { DishFormFieldNames, DishFormType } from './types';
 import { DishFormFields } from './DishFormFields';
 import { validationSchema } from './validation';
 import { Alert, Button, Snackbar } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import axios from 'axios';
 import { filterPayload } from './utils';
 import { useState } from 'react';
+
+const StyledForm = styled('form')`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export function DishForm() {
   const formMethods = useForm<DishFormType>({
@@ -45,12 +53,12 @@ export function DishForm() {
   return (
     <>
       <FormProvider {...formMethods}>
-        <form onSubmit={formMethods.handleSubmit(onSubmit)}>
+        <StyledForm onSubmit={formMethods.handleSubmit(onSubmit)}>
           <DishFormFields />
           <Button variant="contained" type="submit">
             submit
           </Button>
-        </form>
+        </StyledForm>
       </FormProvider>
       <Snackbar
         open={isSnackbarOpen}
