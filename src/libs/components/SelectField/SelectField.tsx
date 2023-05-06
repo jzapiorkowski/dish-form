@@ -4,13 +4,14 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { FieldValues, useFormContext } from 'react-hook-form';
 import { styled } from '@mui/material/styles';
+import { SelectOption } from './types';
 
 interface SelectFieldProps {
   label: string;
   fieldName: string;
   type?: string;
-  options: any[];
-  defaultValue?: any;
+  options: SelectOption[];
+  defaultValue?: string;
 }
 
 const StyledError = styled('p')`
@@ -44,8 +45,8 @@ export default function SelectField({ label, fieldName, options, defaultValue = 
           </MenuItem>
         )}
         {options.map((option, index) => (
-          <MenuItem key={index} value={option?.value || ''}>
-            {option?.label || ''}
+          <MenuItem key={index} value={option.value}>
+            {option.label}
           </MenuItem>
         ))}
       </Select>

@@ -1,3 +1,4 @@
+import { SelectOption } from 'src/libs/components/SelectField/types';
 import { DishFormFieldNames, DishType } from './types';
 
 export const DishFormLabels = {
@@ -10,7 +11,7 @@ export const DishFormLabels = {
   [DishFormFieldNames.SLICES_OF_BREAD]: 'slices of bread',
 };
 
-export const dishTypeOptions = [
+export const dishTypeOptions: SelectOption[] = [
   { label: DishType.PIZZA, value: DishType.PIZZA },
   { label: DishType.SANDWICH, value: DishType.SANDWICH },
   { label: DishType.SOUP, value: DishType.SOUP },
