@@ -3,6 +3,7 @@ import { DishFormFieldNames, DishFormType } from './types';
 import { DishFormFields } from './DishFormFields';
 import { validationSchema } from './validation';
 import { Button } from '@mui/material';
+import axios from 'axios';
 
 export function DishForm() {
   const formMethods = useForm<DishFormType>({
@@ -18,7 +19,18 @@ export function DishForm() {
     resolver: validationSchema,
   });
 
-  const onSubmit = (data: DishFormType) => console.log(data);
+  const onSubmit = async (data: DishFormType) => {
+    try {
+      const response = await axios.post('https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/', data);
+      console.log(response);
+    } catch (error: any) {
+      const requestErrors = error?.response?.data;
+
+      Object.entries(requestErrors).forEach(([fieldName, errorMessage]) => {
+        formMethods.setError(fieldName as DishFormFieldNames, { type: 'custom', message: errorMessage as string });
+      });
+    }
+  };
 
   return (
     <FormProvider {...formMethods}>
