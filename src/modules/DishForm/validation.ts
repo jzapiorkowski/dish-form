@@ -19,25 +19,41 @@ export const validationSchema = yupResolver(
       .mixed<DishType>()
       .oneOf(Object.values(DishType))
       .required(({ path }) => requiredError(path)),
-    [DishFormFieldNames.NO_OF_SLICES]: yup
-      .number()
-      .typeError(({ path }) => numberTypeError(path))
-      .min(1, ({ path }) => minValueError(path as DishFormFieldNames, 1))
-      .required(({ path }) => requiredError(path)),
-    [DishFormFieldNames.DIAMETER]: yup
-      .number()
-      .typeError(({ path }) => numberTypeError(path))
-      .min(1, ({ path }) => minValueError(path as DishFormFieldNames, 1))
-      .required(({ path }) => requiredError(path)),
-    [DishFormFieldNames.SPICINESS_SCALE]: yup
-      .number()
-      .typeError(({ path }) => numberTypeError(path))
-      .min(1, ({ path }) => minValueError(path as DishFormFieldNames, 1))
-      .required(({ path }) => requiredError(path)),
-    [DishFormFieldNames.SLICES_OF_BREAD]: yup
-      .number()
-      .typeError(({ path }) => numberTypeError(path))
-      .min(1, ({ path }) => minValueError(path as DishFormFieldNames, 1))
-      .required(({ path }) => requiredError(path)),
+    [DishFormFieldNames.NO_OF_SLICES]: yup.number().when(DishFormFieldNames.TYPE, {
+      is: DishType.PIZZA,
+      then: () =>
+        yup
+          .number()
+          .min(1, ({ path }) => minValueError(path as DishFormFieldNames, 1))
+          .typeError(({ path }) => numberTypeError(path))
+          .required(({ path }) => requiredError(path)),
+    }),
+    [DishFormFieldNames.DIAMETER]: yup.number().when(DishFormFieldNames.TYPE, {
+      is: DishType.PIZZA,
+      then: () =>
+        yup
+          .number()
+          .min(1, ({ path }) => minValueError(path as DishFormFieldNames, 1))
+          .typeError(({ path }) => numberTypeError(path))
+          .required(({ path }) => requiredError(path)),
+    }),
+    [DishFormFieldNames.SPICINESS_SCALE]: yup.number().when(DishFormFieldNames.TYPE, {
+      is: DishType.SOUP,
+      then: () =>
+        yup
+          .number()
+          .min(1, ({ path }) => minValueError(path as DishFormFieldNames, 1))
+          .typeError(({ path }) => numberTypeError(path))
+          .required(({ path }) => requiredError(path)),
+    }),
+    [DishFormFieldNames.SLICES_OF_BREAD]: yup.number().when(DishFormFieldNames.TYPE, {
+      is: DishType.SOUP,
+      then: () =>
+        yup
+          .number()
+          .min(1, ({ path }) => minValueError(path as DishFormFieldNames, 1))
+          .typeError(({ path }) => numberTypeError(path))
+          .required(({ path }) => requiredError(path)),
+    }),
   }),
 );
