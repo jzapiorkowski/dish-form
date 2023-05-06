@@ -9,7 +9,7 @@ import { useMemo } from 'react';
 const StyledFieldsContainer = styled('div')`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 5px;
 `;
 
 export function DishFormFields() {
@@ -22,19 +22,31 @@ export function DishFormFields() {
       case DishType.PIZZA:
         return (
           <>
-            <TextField label={DishFormLabels.no_of_slices} fieldName={DishFormFieldNames.NO_OF_SLICES}></TextField>
+            <TextField
+              label={DishFormLabels.no_of_slices}
+              fieldName={DishFormFieldNames.NO_OF_SLICES}
+              type="number"
+            ></TextField>
             <TextField label={DishFormLabels.diameter} fieldName={DishFormFieldNames.DIAMETER}></TextField>
           </>
         );
 
       case DishType.SOUP:
         return (
-          <TextField label={DishFormLabels.spiciness_scale} fieldName={DishFormFieldNames.SPICINESS_SCALE}></TextField>
+          <TextField
+            label={DishFormLabels.spiciness_scale}
+            fieldName={DishFormFieldNames.SPICINESS_SCALE}
+            type="number"
+          ></TextField>
         );
 
       case DishType.SANDWICH:
         return (
-          <TextField label={DishFormLabels.slices_of_bread} fieldName={DishFormFieldNames.SLICES_OF_BREAD}></TextField>
+          <TextField
+            label={DishFormLabels.slices_of_bread}
+            fieldName={DishFormFieldNames.SLICES_OF_BREAD}
+            type="number"
+          ></TextField>
         );
 
       default:

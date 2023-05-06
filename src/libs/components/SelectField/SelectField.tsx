@@ -3,14 +3,29 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { FieldValues, useFormContext } from 'react-hook-form';
+import { styled } from '@mui/material/styles';
 
 interface SelectFieldProps {
   label: string;
   fieldName: string;
   type?: string;
-  options: T[];
+  options: any[];
   defaultValue?: any;
 }
+
+const StyledError = styled('p')`
+  color: red;
+  font-weight: 400;
+  font-size: 0.75rem;
+  margin-left: 14px;
+`;
+
+const StyledContainer = styled(FormControl)`
+  width: 350px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+`;
 
 export default function SelectField({ label, fieldName, options, defaultValue = '' }: SelectFieldProps) {
   const {
@@ -20,7 +35,7 @@ export default function SelectField({ label, fieldName, options, defaultValue = 
   const { ref: inputRef, ...inputProps } = register(fieldName);
 
   return (
-    <FormControl variant="filled">
+    <StyledContainer variant="filled">
       <InputLabel>{label}</InputLabel>
       <Select inputRef={inputRef} {...inputProps} defaultValue={defaultValue}>
         {!defaultValue && (
@@ -34,6 +49,11 @@ export default function SelectField({ label, fieldName, options, defaultValue = 
           </MenuItem>
         ))}
       </Select>
-    </FormControl>
+      {errors?.[fieldName] && (
+        <StyledError data-cy={`${fieldName}-error`}>
+          <>{errors?.[fieldName]?.message}</>
+        </StyledError>
+      )}
+    </StyledContainer>
   );
 }

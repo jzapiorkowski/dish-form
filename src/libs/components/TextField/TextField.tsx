@@ -12,6 +12,20 @@ const StyledTextField = styled(MUITextField)`
   width: 342px;
 `;
 
+const StyledError = styled('p')`
+  color: red;
+  font-weight: 400;
+  font-size: 0.75rem;
+  margin-left: 14px;
+`;
+
+const StyledContainer = styled('div')`
+  width: 350px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+`;
+
 export function TextField({ label, fieldName, type = 'text' }: TextFieldProps) {
   const {
     register,
@@ -20,14 +34,21 @@ export function TextField({ label, fieldName, type = 'text' }: TextFieldProps) {
   const { ref: inputRef, ...inputProps } = register(fieldName);
 
   return (
-    <StyledTextField
-      variant="filled"
-      type={type}
-      size="small"
-      inputRef={inputRef}
-      {...inputProps}
-      label={label}
-      error={!!errors?.[fieldName]}
-    />
+    <StyledContainer>
+      <StyledTextField
+        variant="filled"
+        type={type}
+        size="small"
+        inputRef={inputRef}
+        {...inputProps}
+        label={label}
+        error={!!errors?.[fieldName]}
+      />
+      {errors?.[fieldName] && (
+        <StyledError data-cy={`${fieldName}-error`}>
+          <>{errors?.[fieldName]?.message}</>
+        </StyledError>
+      )}
+    </StyledContainer>
   );
 }
