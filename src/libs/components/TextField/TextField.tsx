@@ -9,10 +9,6 @@ interface TextFieldProps {
   placeholder?: string;
 }
 
-const StyledTextField = styled(MUITextField)`
-  width: 342px;
-`;
-
 const StyledError = styled('p')`
   color: red;
   font-weight: 400;
@@ -36,8 +32,9 @@ export function TextField({ label, fieldName, type = 'text', placeholder }: Text
 
   return (
     <StyledContainer>
-      <StyledTextField
+      <MUITextField
         variant="filled"
+        fullWidth
         type={type}
         size="small"
         inputRef={inputRef}
