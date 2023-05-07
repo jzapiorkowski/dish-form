@@ -46,7 +46,7 @@ export function TextField({ label, fieldName, type = 'text', placeholder, inputP
         inputProps={inputProps}
       />
       {errors?.[fieldName] && (
-        <StyledError data-cy={`${fieldName}-error`}>
+        <StyledError>
           <>{errors?.[fieldName]?.message}</>
         </StyledError>
       )}
