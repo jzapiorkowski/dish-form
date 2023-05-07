@@ -2,6 +2,8 @@ version: '3.9'
 
 services:
   dish-form:
+    container_name: dish-form
+    image: dish-form
     build: .
     ports:
       - '3000:3000'
