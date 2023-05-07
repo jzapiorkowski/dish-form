@@ -51,7 +51,7 @@ export function SelectField({ label, fieldName, options, defaultValue = '' }: Se
         ))}
       </Select>
       {errors?.[fieldName] && (
-        <StyledError data-cy={`${fieldName}-error`}>
+        <StyledError>
           <>{errors?.[fieldName]?.message}</>
         </StyledError>
       )}
