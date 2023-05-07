@@ -14,3 +14,14 @@ You can check the live demo here: [click](https://main--effulgent-malasada-b961f
 
 You can run the app by typing `docker compose up` in the project directory, just make sure you have docker and docker-compose installed
 Alternatively you can run the app natively by typing `npm install && npm run dev`, in this case you have to have node and npm installed. I used 16.10.0 and 8.9.0 versions respectively
+
+## How to run unit tests
+
+In order to run unit tests just type\
+in docker:
+
+- `docker exec dish-form npm run test`
+
+or natively:
+
+- `npm run test`
