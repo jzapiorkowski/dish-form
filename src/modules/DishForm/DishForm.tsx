@@ -55,7 +55,7 @@ export function DishForm() {
       <FormProvider {...formMethods}>
         <StyledForm onSubmit={formMethods.handleSubmit(onSubmit)}>
           <DishFormFields />
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" disabled={formMethods.formState.isSubmitting}>
             submit
           </Button>
         </StyledForm>
