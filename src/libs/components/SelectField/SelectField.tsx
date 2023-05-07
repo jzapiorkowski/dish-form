@@ -22,7 +22,7 @@ const StyledError = styled('p')`
 `;
 
 const StyledContainer = styled(FormControl)`
-  width: 350px;
+  width: 270px;
   height: 90px;
   display: flex;
   flex-direction: column;

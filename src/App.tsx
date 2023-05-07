@@ -7,8 +7,7 @@ const StyledFormContainer = styled(Paper)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-  width: 500px;
+  padding: 35px;
   margin-top: 40px;
 `;
 
@@ -17,7 +16,6 @@ const StyledPageContainer = styled('div')`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 `;
 
 function App() {
