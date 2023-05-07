@@ -27,7 +27,14 @@ export function DishFormFields() {
               fieldName={DishFormFieldNames.NO_OF_SLICES}
               type="number"
             ></TextField>
-            <TextField label={DishFormLabels.diameter} fieldName={DishFormFieldNames.DIAMETER}></TextField>
+            <TextField
+              label={DishFormLabels.diameter}
+              fieldName={DishFormFieldNames.DIAMETER}
+              type="number"
+              inputProps={{
+                step: 0.1,
+              }}
+            ></TextField>
           </>
         );
 

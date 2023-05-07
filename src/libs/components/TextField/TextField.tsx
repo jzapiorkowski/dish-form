@@ -1,4 +1,4 @@
-import { TextField as MUITextField } from '@mui/material';
+import { InputBaseComponentProps, TextField as MUITextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { FieldValues, useFormContext } from 'react-hook-form';
 
@@ -7,6 +7,7 @@ interface TextFieldProps {
   fieldName: string;
   type?: string;
   placeholder?: string;
+  inputProps?: InputBaseComponentProps;
 }
 
 const StyledError = styled('p')`
@@ -23,12 +24,12 @@ const StyledContainer = styled('div')`
   flex-direction: column;
 `;
 
-export function TextField({ label, fieldName, type = 'text', placeholder }: TextFieldProps) {
+export function TextField({ label, fieldName, type = 'text', placeholder, inputProps }: TextFieldProps) {
   const {
     register,
     formState: { errors },
   } = useFormContext<FieldValues>();
-  const { ref: inputRef, ...inputProps } = register(fieldName);
+  const { ref: inputRef, ...registerProps } = register(fieldName);
 
   return (
     <StyledContainer>
@@ -38,10 +39,11 @@ export function TextField({ label, fieldName, type = 'text', placeholder }: Text
         type={type}
         size="small"
         inputRef={inputRef}
-        {...inputProps}
+        {...registerProps}
         label={label}
         placeholder={placeholder}
         error={!!errors?.[fieldName]}
+        inputProps={inputProps}
       />
       {errors?.[fieldName] && (
         <StyledError data-cy={`${fieldName}-error`}>
