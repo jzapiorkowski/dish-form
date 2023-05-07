@@ -1,16 +1,9 @@
-import { styled } from '@mui/material/styles';
 import { TextField } from '../../libs/components/TextField';
 import SelectField from '../../libs/components/SelectField/SelectField';
 import { DishFormLabels, dishTypeOptions } from './constants';
 import { DishFormFieldNames, DishFormType, DishType } from './types';
 import { useFormContext } from 'react-hook-form';
 import { useMemo } from 'react';
-
-const StyledFieldsContainer = styled('div')`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`;
 
 export function DishFormFields() {
   const { watch } = useFormContext<DishFormType>();
@@ -62,7 +55,7 @@ export function DishFormFields() {
   }, [dishType]);
 
   return (
-    <StyledFieldsContainer>
+    <>
       <TextField label={DishFormLabels.name} fieldName={DishFormFieldNames.NAME}></TextField>
       <TextField
         label={DishFormLabels.preparation_time}
@@ -75,6 +68,6 @@ export function DishFormFields() {
         options={dishTypeOptions}
       ></SelectField>
       {additionalFields}
-    </StyledFieldsContainer>
+    </>
   );
 }
