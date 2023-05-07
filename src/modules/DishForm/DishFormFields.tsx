@@ -1,5 +1,4 @@
-import { TextField } from '../../libs/components/TextField';
-import SelectField from '../../libs/components/SelectField/SelectField';
+import { TextField, SelectField } from '@libs/components';
 import { DishFormLabels, dishTypeOptions } from './constants';
 import { DishFormFieldNames, DishFormType, DishType } from './types';
 import { useFormContext } from 'react-hook-form';

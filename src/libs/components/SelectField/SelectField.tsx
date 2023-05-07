@@ -28,7 +28,7 @@ const StyledContainer = styled(FormControl)`
   flex-direction: column;
 `;
 
-export default function SelectField({ label, fieldName, options, defaultValue = '' }: SelectFieldProps) {
+export function SelectField({ label, fieldName, options, defaultValue = '' }: SelectFieldProps) {
   const {
     register,
     formState: { errors },
